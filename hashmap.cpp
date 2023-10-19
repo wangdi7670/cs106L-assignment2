@@ -127,6 +127,11 @@ typename HashMap<K, M, H>::iterator HashMap<K, M, H>::end() {
 }
 
 template <typename K, typename M, typename H>
+typename HashMap<K, M, H>::const_iterator HashMap<K, M, H>::end() const{
+    return static_cast<const_iterator>(const_cast<HashMap<K, M, H>*>(this)->end());
+}
+
+template <typename K, typename M, typename H>
 size_t HashMap<K, M, H>::first_not_empty_bucket() const {
     auto isNotNullptr = [ ](const auto& v){
         return v != nullptr;

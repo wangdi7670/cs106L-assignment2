@@ -375,6 +375,8 @@ public:
      *      while (iter != map.end()) {...}
      */
     iterator end();
+    
+    const_iterator end() const;
 
 
     /*

@@ -14,7 +14,7 @@ int student_main();
 void init_map(HashMap<string, int>& map);
 void print_difference(HashMap<string, int>& lecturer_record, string lecturer1, string lecturer2);
 template<typename KeyType, typename MappedTyped>
-std::set<KeyType> find_keys(HashMap<KeyType, MappedTyped>& map);
+std::set<KeyType> find_keys(const HashMap<KeyType, MappedTyped>& map);
 
 int main() {
     int answer;
@@ -66,7 +66,7 @@ void init_map(HashMap<string, int>& map) {
 
 //this will return a set of all the keys in parameter map
 template<typename KeyType, typename MappedTyped>
-std::set<KeyType> find_keys(HashMap<KeyType, MappedTyped>& map){
+std::set<KeyType> find_keys(const HashMap<KeyType, MappedTyped>& map){
     std::set<KeyType> res;
     for(auto it = map.begin(); it != map.end(); ++it){
         //Remember structured binding? :)
