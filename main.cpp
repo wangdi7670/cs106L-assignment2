@@ -12,7 +12,7 @@ int student_main();
 //student_main helpers. Remember to change the necessary function signatures here and 
 //where they are implemented for milestone 1!
 void init_map(HashMap<string, int>& map);
-void print_difference(HashMap<string, int>& lecturer_record, string lecturer1, string lecturer2);
+void print_difference(const HashMap<string, int>& lecturer_record, string lecturer1, string lecturer2);
 template<typename KeyType, typename MappedTyped>
 std::set<KeyType> find_keys(const HashMap<KeyType, MappedTyped>& map);
 
@@ -78,7 +78,7 @@ std::set<KeyType> find_keys(const HashMap<KeyType, MappedTyped>& map){
 
 //this will find and print which lecturer lectured first, and how long after them the
 //second lecturer lectured
-void print_difference(HashMap<string, int>& lecturer_record, string lecturer1, string lecturer2){
+void print_difference(const HashMap<string, int>& lecturer_record, string lecturer1, string lecturer2){
     int year1 = lecturer_record.at(lecturer1);
     int year2 = lecturer_record.at(lecturer2);
     if(year1 < year2){
