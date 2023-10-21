@@ -135,6 +135,12 @@ public:
     */
     HashMap(const HashMap& other);
 
+
+    /*
+    copy assignment
+    */
+    HashMap& operator=(const HashMap& other);
+
     /*
     * Returns the number of (K, M) pairs in the map.
     *
