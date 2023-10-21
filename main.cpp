@@ -16,6 +16,10 @@ void print_difference(const HashMap<string, int>& lecturer_record, string lectur
 template<typename KeyType, typename MappedTyped>
 std::set<KeyType> find_keys(const HashMap<KeyType, MappedTyped>& map);
 
+// my own function helpers
+template<class K, class V>
+void print_map(const HashMap<K, V>& map);
+
 int main() {
     int answer;
     cout << "Please enter a number and then hit ENTER\n1) Milestone 1 code\n2) Milestone 2 tests" << endl;
@@ -87,5 +91,16 @@ void print_difference(const HashMap<string, int>& lecturer_record, string lectur
         cout << lecturer2 << " lectured first and " << year1 - year2 << " year(s) later, " << lecturer1 << " lectured" << endl;
     } else {
         cout << lecturer1 << " and " << lecturer2 << " lectured the same year, " << year1 << endl;
+    }
+}
+
+
+
+template<class K, class V>
+void print_map(const HashMap<K, V>& map)
+{
+    for (auto iter = map.begin(); iter != map.end(); iter++) {
+        auto [k, v] = *iter;
+        std::cout << k << " " << v << "\n";
     }
 }
