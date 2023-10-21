@@ -21,6 +21,18 @@ HashMap<K, M, H>::~HashMap() {
 }
 
 template <typename K, typename M, typename H>
+HashMap<K, M, H>::HashMap(const HashMap& other) :
+    _size{0},
+    _hash_function{other._hash_function},  // other has access to _hash_function
+    _buckets_array(other.size(), nullptr) 
+{
+    for (auto iter = other.begin(); iter != other.end(); iter++) {
+        auto [key, value] = *iter;
+        insert({key, value});
+    }
+}
+
+template <typename K, typename M, typename H>
 inline size_t HashMap<K, M, H>::size() const {
     return _size;
 }

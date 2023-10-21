@@ -129,6 +129,12 @@ public:
     */
     ~HashMap();
 
+
+    /*
+    copy constructor
+    */
+    HashMap(const HashMap& other);
+
     /*
     * Returns the number of (K, M) pairs in the map.
     *
