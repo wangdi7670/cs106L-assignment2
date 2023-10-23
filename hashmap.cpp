@@ -106,7 +106,9 @@ template <typename K, typename M, typename H>
 void HashMap<K, M, H>::clear() {
     for (auto& curr : _buckets_array) {
         while (curr != nullptr) {
+            auto temp = curr;
             curr = curr->next;
+            delete temp;
         }
     }
     _size = 0;
