@@ -40,7 +40,8 @@ HashMap<K, M, H>& HashMap<K, M, H>::operator=(const HashMap& other)
     if (this == &other) {
         return *this;
     }
-    _size = 0;
+    // _size = 0;
+    clear();
     _hash_function = other._hash_function;
     _buckets_array.clear();
     for (size_t i = 0; i < other.bucket_count(); i++) {
@@ -56,8 +57,12 @@ HashMap<K, M, H>& HashMap<K, M, H>::operator=(const HashMap& other)
 
 // move constructor 
 template <typename K, typename M, typename H>
-HashMap<K, M, H>::HashMap(HashMap&& other)
+HashMap<K, M, H>::HashMap(HashMap&& other) :
+    _buckets_array(other.bucket_count(), nullptr)
 {
+    _size = std::move(other.size());
+    _hash_function = std::move(_hash_function);
+    _buckets_array = std::move(other._buckets_array);
 }
 
 
