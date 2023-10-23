@@ -70,6 +70,13 @@ HashMap<K, M, H>::HashMap(HashMap&& other) :
 template <typename K, typename M, typename H>
 HashMap<K, M, H>& HashMap<K, M, H>::operator=(HashMap&& other)
 {
+    if (this == &other) {
+        return *this;
+    }
+    clear();
+    _size = std::move(other.size());
+    _hash_function = std::move(_hash_function);
+    _buckets_array = std::move(other._buckets_array);
     return *this;
 }
 
