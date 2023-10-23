@@ -42,7 +42,8 @@ HashMap<K, M, H>& HashMap<K, M, H>::operator=(const HashMap& other)
     }
     _size = 0;
     _hash_function = other._hash_function;
-    for (size_t i = 0; i < other.size(); i++) {
+    _buckets_array.clear();
+    for (size_t i = 0; i < other.bucket_count(); i++) {
         _buckets_array.push_back(nullptr);
     }
 
