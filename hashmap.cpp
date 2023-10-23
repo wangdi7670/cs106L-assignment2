@@ -37,6 +37,9 @@ HashMap<K, M, H>::HashMap(const HashMap& other) :
 template <typename K, typename M, typename H>
 HashMap<K, M, H>& HashMap<K, M, H>::operator=(const HashMap& other)
 {
+    if (this == &other) {
+        return *this;
+    }
     _size = 0;
     _hash_function = other._hash_function;
     for (size_t i = 0; i < other.size(); i++) {
