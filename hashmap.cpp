@@ -49,6 +49,20 @@ HashMap<K, M, H>& HashMap<K, M, H>::operator=(const HashMap& other)
     return *this;    
 }
 
+// move constructor 
+template <typename K, typename M, typename H>
+HashMap<K, M, H>::HashMap(HashMap&& other)
+{
+}
+
+
+// move assignment
+template <typename K, typename M, typename H>
+HashMap<K, M, H>& HashMap<K, M, H>::operator=(HashMap&& other)
+{
+    return *this;
+}
+
 template <typename K, typename M, typename H>
 inline size_t HashMap<K, M, H>::size() const {
     return _size;
@@ -228,14 +242,17 @@ template <typename K, typename M, typename H>
 
 template <typename K, typename M, typename H>
 void HashMap<K, M, H>::rehash(size_t new_bucket_count) {
-if (new_bucket_count == 0) {
-    throw std::out_of_range("HashMap<K, M, H>::rehash: new_bucket_count must be positive.");
-}
+    if (new_bucket_count == 0)
+    {
+        throw std::out_of_range("HashMap<K, M, H>::rehash: new_bucket_count must be positive.");
+    }
 
-std::vector<node*> new_buckets_array(new_bucket_count, nullptr);
-    for (auto& curr : _buckets_array) { // short answer question is asking about this 'curr'
-        while (curr != nullptr) {
-            const auto& [key, mapped] = curr->value;
+    std::vector<node *> new_buckets_array(new_bucket_count, nullptr);
+    for (auto &curr : _buckets_array)
+    { // short answer question is asking about this 'curr'
+        while (curr != nullptr)
+        {
+            const auto &[key, mapped] = curr->value;
             size_t index = _hash_function(key) % new_bucket_count;
 
             auto temp = curr;

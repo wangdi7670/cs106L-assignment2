@@ -141,6 +141,17 @@ public:
     */
     HashMap& operator=(const HashMap& other);
 
+
+    /*
+    move constructor
+    */
+    HashMap(HashMap&& other);
+
+    /*
+    move assignment
+    */
+    HashMap& operator=(HashMap&& other);
+
     /*
     * Returns the number of (K, M) pairs in the map.
     *
