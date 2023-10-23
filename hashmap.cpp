@@ -20,11 +20,12 @@ HashMap<K, M, H>::~HashMap() {
     clear();
 }
 
+// copy constructor
 template <typename K, typename M, typename H>
 HashMap<K, M, H>::HashMap(const HashMap& other) :
     _size{0},
     _hash_function{other._hash_function},  // other has access to _hash_function
-    _buckets_array(other.size(), nullptr) 
+    _buckets_array(other.bucket_count(), nullptr) 
 {
     for (auto iter = other.begin(); iter != other.end(); iter++) {
         auto [key, value] = *iter;
